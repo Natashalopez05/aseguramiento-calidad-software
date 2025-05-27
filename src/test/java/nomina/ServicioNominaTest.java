@@ -1,11 +1,14 @@
 package nomina;
 
 
+import org.example.entities.Empleado;
+import org.example.entities.TipoEmpleado;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ServicioNominaTest {
+
     @Test
     void calcularSalarioSinHorasExtraParaFullTime() {
         Empleado empleado = new Empleado("Natasha", TipoEmpleado.FULL_TIME, 400);
