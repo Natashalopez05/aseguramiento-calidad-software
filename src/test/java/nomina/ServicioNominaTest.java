@@ -2,6 +2,7 @@ package nomina;
 
 
 import org.example.entities.Empleado;
+import org.example.entities.ServicioNomina;
 import org.example.entities.TipoEmpleado;
 import org.junit.jupiter.api.Test;
 
