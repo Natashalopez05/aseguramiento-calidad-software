@@ -16,16 +16,31 @@ public class ServicioNomina {
         }
     }
 
+
     public double calcularNomina(Empleado empleado, int horasTrabajadas, boolean autorizacionLimite) {
+
+        if (empleado == null) {
+            throw new IllegalArgumentException("El empleado no puede ser nulo");
+        }
+
         double salarioBase = calcularSalarioBase(empleado, horasTrabajadas);
         double salarioExtra = 0.0;
+        double bono = 0.0;
+
+        if (empleado.getTarifaPorHora() <= 0) {
+            throw new IllegalArgumentException("La tarifa por hora debe ser mayor que cero");
+        }
 
         if (horasTrabajadas > 40) {
             int horasExtra = horasTrabajadas - 40;
             salarioExtra = calcularSalarioExtra(empleado, horasExtra);
         }
 
-        double salarioSemanal = salarioBase + salarioExtra;
+        if (horasTrabajadas > 38){
+            bono = 500;
+        }
+
+        double salarioSemanal = salarioBase + salarioExtra + bono;
         if(salarioSemanal > 20000 && !autorizacionLimite) {
             throw new IllegalArgumentException("El salario semanal no puede superar los 20,000 sin autorización");
         }
