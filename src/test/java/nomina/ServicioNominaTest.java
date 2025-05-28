@@ -14,7 +14,7 @@ public class ServicioNominaTest {
     void calcularSalarioSinHorasExtraParaFullTime() {
         Empleado empleado = new Empleado("Natasha", TipoEmpleado.FULL_TIME, 400);
         ServicioNomina servicio = new ServicioNomina();
-        double salario = servicio.calcularNomina(empleado, 40);
+        double salario = servicio.calcularNomina(empleado, 40, false);
         assertEquals(16000, salario); // 40h x 400
     }
 
