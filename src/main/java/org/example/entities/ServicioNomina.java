@@ -22,19 +22,24 @@ public class ServicioNomina {
         if (empleado == null) {
             throw new IllegalArgumentException("El empleado no puede ser nulo");
         }
-
-        double salarioBase = calcularSalarioBase(empleado, horasTrabajadas);
         double salarioExtra = 0.0;
         double bono = 0.0;
+        double salarioBase = 0.0;
+
+        if (horasTrabajadas > 40) {
+            int horasExtra = horasTrabajadas - 40;
+            horasTrabajadas = 40;
+            salarioExtra = calcularSalarioExtra(empleado, horasExtra);
+        }
+
+        salarioBase = calcularSalarioBase(empleado, horasTrabajadas);
+
 
         if (empleado.getTarifaPorHora() <= 0) {
             throw new IllegalArgumentException("La tarifa por hora debe ser mayor que cero");
         }
 
-        if (horasTrabajadas > 40) {
-            int horasExtra = horasTrabajadas - 40;
-            salarioExtra = calcularSalarioExtra(empleado, horasExtra);
-        }
+
 
         if (horasTrabajadas > 38){
             bono = 500;
@@ -50,9 +55,9 @@ public class ServicioNomina {
         }
 
         if (empleado.getTipo() == TipoEmpleado.FULL_TIME) {
-            return salarioBase;
+            return salarioSemanal;
         } else if (empleado.getTipo() == TipoEmpleado.PART_TIME) {
-            return salarioBase * 0.8;
+            return salarioSemanal * 0.8;
         } else {
             throw new IllegalArgumentException("Tipo de empleado desconocido");
         }

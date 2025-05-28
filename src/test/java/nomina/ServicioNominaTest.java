@@ -15,7 +15,15 @@ public class ServicioNominaTest {
         Empleado empleado = new Empleado("Natasha", TipoEmpleado.FULL_TIME, 400);
         ServicioNomina servicio = new ServicioNomina();
         double salario = servicio.calcularNomina(empleado, 40, false);
-        assertEquals(16000, salario); // 40h x 400
+        assertEquals(16500, salario); // 40h x 400
+    }
+
+    @Test
+    void calcularSalarioConHorasExtraParaFullTime() {
+        Empleado empleado = new Empleado("Natasha", TipoEmpleado.FULL_TIME, 200);
+        ServicioNomina servicio = new ServicioNomina();
+        double salario = servicio.calcularNomina(empleado, 45, false);
+        assertEquals(10000, salario);
     }
 
 }
