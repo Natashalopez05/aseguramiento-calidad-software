@@ -1,4 +1,4 @@
-## Cierre: Reflexión y Preguntas
+## Cierre: Reflexión y Preguntas realizado por Natasha López y José Jáquez
 <p>Preguntas respondidas por nosotros con respecto a nuestra primera práctica en el aula:</p>
 
 - **¿Cómo influyó el enfoque TDD en tu proceso de desarrollo?**
